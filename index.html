@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru-RU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3a1c9c" />
+  <meta name="description" content="Инструмент прогнозирования спроса и продаж авиабилетов для Решись Авиа." />
+  <title>Решись Авиа</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Решись Авиа -- на главную">
+        <span class="brand-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none" width="28" height="28"><path d="M4 15.8 22 5l-5.9 17-3.2-6.6L4 15.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m13.5 15.7 4.2-4.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-name">решись <strong>авиа</strong></span>
+      </a>
+
+      <nav class="top-nav" aria-label="Основная навигация">
+        <a class="top-nav-link active" href="#forecast">Прогноз</a>
+        <a class="top-nav-link" href="#results">Аналитика</a>
+      </nav>
+
+      <div class="account-area" id="accountArea">
+        <button class="login-button" id="headerLoginButton" type="button">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 10a3.2 3.2 0 1 0 0-6.4A3.2 3.2 0 0 0 10 10Zm-6 6.5c.4-2.4 2.7-4 6-4s5.6 1.6 6 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="login-label">Войти через Яндекс</span>
+        </button>
+        <div class="user-menu" id="userMenu" hidden>
+          <span class="user-avatar" aria-hidden="true">Р</span>
+          <span class="user-meta"><small>Вы вошли</small><strong id="userLabel">Пользователь</strong></span>
+          <button class="logout-button" id="logoutButton" type="button" title="Выйти" aria-label="Выйти">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 4H4.8A1.8 1.8 0 0 0 3 5.8v8.4A1.8 1.8 0 0 0 4.8 16H8m3-9 4 3-4 3m4-3H7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero" id="top">
+    <div class="wrap hero-inner">
+      <h1>Прогноз продаж авиабилетов</h1>
+      <div class="hero-foot">
+        <p>Оцените спрос на рейс и посмотрите, сколько билетов, вероятнее всего, будет продано.</p>
+        <div class="system-status" id="systemStatus"><span class="status-dot"></span><span id="systemStatusText">Проверяем подключение</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap page-body">
+    <main class="main-column">
+      <section class="auth-card panel" id="authGate" hidden>
+        <div class="auth-copy">
+          <h2>Войдите, чтобы начать работу</h2>
+          <p>После входа вам станут доступны маршруты, параметры рейсов и прогноз продаж.</p>
+          <button class="primary-button auth-cta" id="authLoginButton" type="button">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 10a3.2 3.2 0 1 0 0-6.4A3.2 3.2 0 0 0 10 10Zm-6 6.5c.4-2.4 2.7-4 6-4s5.6 1.6 6 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            Войти через Яндекс
+          </button>
+        </div>
+        <div class="auth-illustration" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none"><path d="M24 112 176 28l-44 144-30-52-78-8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m102 120 74-92" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </section>
+
+      <div id="workspace" hidden>
+        <section class="panel forecast-panel" id="forecast" aria-labelledby="forecastTitle">
+          <h2 class="visually-hidden" id="forecastTitle">Настройте прогноз</h2>
+
+          <form id="forecastForm" novalidate>
+            <div class="form-grid route-grid">
+              <label class="field-group field-origin" for="originSelect">
+                <span class="field-label">Откуда</span>
+                <span class="select-wrap"><select id="originSelect" name="origin" required disabled><option value="">Загрузка маршрутов…</option></select><svg class="select-chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></span>
+                <span class="field-error" data-error-for="origin"></span>
+              </label>
+              <label class="field-group field-destination" for="destinationSelect">
+                <span class="field-label">Куда</span>
+                <span class="select-wrap"><select id="destinationSelect" name="destination" required disabled><option value="">Сначала выберите отправление</option></select><svg class="select-chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></span>
+                <span class="field-error" data-error-for="destination"></span>
+              </label>
+            </div>
+
+            <div class="form-grid detail-grid">
+              <label class="field-group field-date" for="dateInput">
+                <span class="field-label">Дата вылета</span>
+                <span class="input-shell date-shell"><input id="dateInput" name="date" type="text" inputmode="numeric" placeholder="dd/mm/yyyy" maxlength="10" autocomplete="off" required disabled /><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M7.5 3.5v3M16.5 3.5v3M3.5 9.5h17"/></svg></span>
+                <span class="field-hint" id="dateHint">Доступный период зависит от рейса</span>
+                <span class="field-error" data-error-for="date"></span>
+              </label>
+              <label class="field-group field-price" for="priceInput">
+                <span class="field-label">Цена билета</span>
+                <span class="input-shell price-shell"><input id="priceInput" name="price" type="number" min="0.01" max="10000000" step="any" inputmode="decimal" placeholder="Например, 8 500" required disabled /><span class="currency-symbol">₽</span></span>
+                <span class="field-hint" id="basePriceHint">Базовая цена появится после выбора маршрута</span>
+                <span class="field-error" data-error-for="price"></span>
+              </label>
+            </div>
+
+            <div class="form-bottom">
+              <p class="form-info">Цена влияет на спрос, а продажи ограничены вместимостью самолёта.</p>
+              <button class="primary-button submit-button" id="submitButton" type="submit" disabled>
+                <span class="button-spinner" aria-hidden="true"></span>
+                <span class="submit-label">Рассчитать прогноз</span>
+              </button>
+            </div>
+            <div class="form-alert" id="formAlert" role="alert" hidden></div>
+          </form>
+        </section>
+
+        <section class="result-section" id="results" hidden>
+          <div class="result-heading-row">
+            <h2>Прогноз по рейсу</h2>
+            <span class="result-date" id="resultDate"></span>
+          </div>
+
+          <div class="route-summary panel">
+            <div class="route-summary-main">
+              <div class="airport-block"><span class="airport-code" id="summaryOriginCode">MOW</span><span class="airport-city" id="summaryOriginCity">Москва</span></div>
+              <div class="route-connector">
+                <span class="route-line"></span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13.5 21 5l-6.5 16-3.4-6.7L3 13.5Z"/></svg>
+                <span class="route-caption" id="summaryRouteCode">MOW -- AER</span>
+              </div>
+              <div class="airport-block destination-block"><span class="airport-code" id="summaryDestinationCode">AER</span><span class="airport-city" id="summaryDestinationCity">Сочи</span></div>
+            </div>
+            <div class="summary-price"><span>Цена билета</span><strong id="summaryPrice">8 500 ₽</strong><small id="summaryBasePrice">Базовая: 9 000 ₽</small></div>
+          </div>
+
+          <div class="metrics-grid">
+            <article class="metric-card">
+              <span class="metric-label">Мест в самолёте</span>
+              <strong class="metric-value" id="seatsValue">-</strong>
+              <span class="metric-caption">Общая вместимость рейса</span>
+            </article>
+            <article class="metric-card highlight-metric">
+              <span class="metric-label">Прогноз продаж</span>
+              <strong class="metric-value" id="salesValue">-</strong>
+              <span class="metric-caption">Билетов по медианному сценарию</span>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">Свободные места</span>
+              <strong class="metric-value" id="freeSeatsValue">-</strong>
+              <span class="metric-caption">Остаток после прогнозных продаж</span>
+            </article>
+          </div>
+
+          <div class="capacity-notice" id="capacityNotice" hidden><span class="notice-symbol">!</span><span id="capacityNoticeText">Медианный спрос достигает вместимости самолёта.</span></div>
+
+          <section class="panel chart-panel">
+            <div class="chart-heading">
+              <div>
+                <h2>Спрос при выбранной цене</h2>
+                <p>Девять сценариев прогноза от 10-го до 90-го квантиля.</p>
+              </div>
+              <div class="chart-legend">
+                <span><i class="legend-line demand-legend"></i> Спрос</span>
+                <span><i class="legend-line capacity-legend"></i> Вместимость</span>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="demandChart" role="img" aria-label="График распределения спроса по девяти квантилям">
+                Ваш браузер не поддерживает отображение графика.
+              </canvas>
+            </div>
+            <div class="chart-footnotes">
+              <div><span class="quantile-dot pessimistic-dot"></span><span><b>0.1</b><small>Пессимистичный</small></span></div>
+              <div class="median-footnote"><span class="quantile-dot median-dot"></span><span><b>0.5</b><small>Медиана</small></span></div>
+              <div><span class="quantile-dot optimistic-dot"></span><span><b>0.9</b><small>Оптимистичный</small></span></div>
+            </div>
+            <p class="chart-explanation">Значения спроса не ограничиваются числом мест. Если спрос выше вместимости, прогноз продаж ограничивается количеством кресел; если спрос отрицательный, продажи равны нулю.</p>
+          </section>
+        </section>
+
+        <section class="empty-result" id="emptyResult">
+          <strong>Здесь появится ваш прогноз</strong>
+          <p>Заполните параметры рейса выше и нажмите «Рассчитать прогноз».</p>
+        </section>
+      </div>
+
+      <section class="loading-card panel" id="loadingCard" hidden>
+        <span class="loading-spinner"></span>
+        <strong>Подключаем рабочее пространство</strong>
+        <p>Проверяем авторизацию и загружаем доступные маршруты.</p>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="/src/js/app.js"></script>
+</body>
+</html>

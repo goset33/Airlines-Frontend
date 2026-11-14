@@ -1,0 +1,290 @@
+.forecast-panel {
+    padding: 32px;
+}
+
+#forecastForm {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr) minmax(0, 1.15fr) minmax(0, 1fr) auto;
+    column-gap: 16px;
+    row-gap: 20px;
+    align-items: start;
+}
+
+.form-grid,
+.form-bottom {
+    display: contents;
+}
+
+.field-origin {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.field-destination {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.field-date {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.field-price {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.submit-button {
+    grid-column: 5;
+    grid-row: 1;
+    margin-top: 28px;
+}
+
+.form-info {
+    grid-column: 1 / -1;
+    grid-row: 2;
+}
+
+.form-alert {
+    grid-column: 1 / -1;
+    grid-row: 3;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.field-label {
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.select-wrap,
+.input-shell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    border-radius: var(--radius-field);
+    background: var(--field);
+    transition: background .15s ease;
+}
+
+.select-wrap:hover,
+.input-shell:hover {
+    background: #e9e7f1;
+}
+
+.select-wrap:focus-within,
+.input-shell:focus-within {
+    outline: 2px solid var(--violet);
+    outline-offset: 0;
+    background: #fff;
+}
+
+.select-wrap select,
+.input-shell input {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    padding: 0 44px 0 18px;
+    border: 0;
+    outline: 0;
+    color: var(--ink);
+    background: transparent;
+    appearance: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+}
+
+.select-wrap select {
+    cursor: pointer;
+}
+
+.select-wrap select:disabled,
+.input-shell input:disabled {
+    color: #a39fb5;
+    cursor: not-allowed;
+}
+
+.select-wrap select:invalid,
+.input-shell input::placeholder {
+    color: #8f8aa3;
+    font-weight: 400;
+}
+
+.select-chevron {
+    position: absolute;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--ink-soft);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+.field-hint {
+    min-height: 20px;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.field-error {
+    margin-top: 4px;
+    color: var(--danger);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.field-group.invalid .select-wrap,
+.field-group.invalid .input-shell {
+    background: var(--danger-tint);
+    outline: 2px solid var(--danger);
+}
+
+.field-group.invalid .field-hint {
+    display: none;
+}
+
+.date-shell input {
+    padding-right: 44px;
+    color-scheme: light;
+}
+
+.date-shell svg {
+    position: absolute;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--ink-soft);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+.price-shell input {
+    padding-right: 44px;
+}
+
+.currency-symbol {
+    position: absolute;
+    right: 18px;
+    color: var(--ink-soft);
+    font-size: 17px;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.form-info {
+    max-width: 62ch;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.button-spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, .35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+}
+
+.submit-button.is-loading .button-spinner {
+    display: inline-block;
+}
+
+.form-alert {
+    padding: 14px 18px;
+    border-radius: var(--radius-field);
+    color: #8c1f33;
+    background: var(--danger-tint);
+    font-size: 15px;
+}
+
+/* Календарь flatpickr */
+body .flatpickr-calendar {
+    font-family: var(--font);
+    border: 2px solid var(--violet);
+    border-radius: 20px;
+    background: var(--surface);
+    box-shadow: none;
+}
+
+body .flatpickr-calendar::before,
+body .flatpickr-calendar::after {
+    display: none;
+}
+
+body .flatpickr-months .flatpickr-month,
+body .flatpickr-current-month .flatpickr-monthDropdown-months,
+body .flatpickr-current-month input.cur-year {
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+body .flatpickr-months .flatpickr-prev-month,
+body .flatpickr-months .flatpickr-next-month {
+    color: var(--violet);
+    fill: var(--violet);
+}
+
+body .flatpickr-months .flatpickr-prev-month:hover svg,
+body .flatpickr-months .flatpickr-next-month:hover svg {
+    fill: var(--violet-hover);
+}
+
+body span.flatpickr-weekday {
+    color: var(--muted);
+    font-weight: 400;
+}
+
+body .flatpickr-day {
+    color: var(--ink);
+    border-radius: 12px;
+    font-weight: 400;
+}
+
+body .flatpickr-day:hover,
+body .flatpickr-day:focus {
+    background: var(--violet-tint);
+    border-color: var(--violet-tint);
+}
+
+body .flatpickr-day.today {
+    border-color: var(--violet);
+}
+
+body .flatpickr-day.selected,
+body .flatpickr-day.selected:hover {
+    color: #fff;
+    background: var(--violet);
+    border-color: var(--violet);
+}
+
+body .flatpickr-day.flatpickr-disabled,
+body .flatpickr-day.flatpickr-disabled:hover,
+body .flatpickr-day.prevMonthDay,
+body .flatpickr-day.nextMonthDay {
+    color: #b5b1c6;
+    background: transparent;
+    border-color: transparent;
+}

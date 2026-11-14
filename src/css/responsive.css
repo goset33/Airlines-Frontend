@@ -1,0 +1,322 @@
+@media (max-width: 1080px) {
+    .wrap {
+        padding: 0 24px;
+    }
+
+    .topbar-inner {
+        gap: 32px;
+    }
+
+    #forecastForm {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .field-date {
+        grid-column: 1;
+        grid-row: 2;
+        margin-left: 0;
+    }
+
+    .field-price {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .form-info {
+        grid-row: 3;
+    }
+
+    .submit-button {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        margin: 0;
+        width: 100%;
+    }
+
+    .form-alert {
+        grid-row: 5;
+    }
+
+    .summary-price {
+        flex-basis: 250px;
+        padding: 32px;
+    }
+
+    .route-summary-main {
+        padding: 32px;
+    }
+}
+
+@media (max-width: 760px) {
+    .wrap {
+        padding: 0 16px;
+    }
+
+    .topbar-inner {
+        min-height: 64px;
+        gap: 16px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+
+    .top-nav {
+        gap: 20px;
+        margin-left: auto;
+    }
+
+    .top-nav-link {
+        font-size: 15px;
+    }
+
+    .account-area {
+        margin-left: 0;
+    }
+
+    .login-button {
+        width: 44px;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .login-label {
+        display: none;
+    }
+
+    .user-meta {
+        display: none;
+    }
+
+    .hero-inner {
+        padding-top: 32px;
+        padding-bottom: 112px;
+    }
+
+    .hero-foot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        margin-top: 24px;
+    }
+
+    .hero-foot p {
+        font-size: 17px;
+    }
+
+    .main-column {
+        margin-top: -72px;
+        gap: 16px;
+    }
+
+    #workspace {
+        gap: 24px;
+    }
+
+    .panel {
+        border-radius: 20px;
+    }
+
+    .auth-card {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 8px;
+    }
+
+    .auth-copy {
+        padding: 24px 16px;
+    }
+
+    .auth-illustration {
+        order: -1;
+        min-height: 150px;
+        border-radius: 14px;
+    }
+
+    .auth-illustration svg {
+        width: 100px;
+    }
+
+    .auth-cta {
+        width: 100%;
+    }
+
+    .forecast-panel {
+        padding: 24px 16px 16px;
+    }
+
+    #forecastForm {
+        row-gap: 16px;
+    }
+
+    .field-origin,
+    .field-destination {
+        grid-column: 1 / -1;
+    }
+
+    .field-origin {
+        grid-row: 1;
+    }
+
+    .field-destination {
+        grid-row: 2;
+    }
+
+    .field-date {
+        grid-row: 3;
+    }
+
+    .field-price {
+        grid-row: 3;
+    }
+
+    .form-info {
+        grid-row: 4;
+    }
+
+    .submit-button {
+        grid-row: 5;
+    }
+
+    .form-alert {
+        grid-row: 6;
+    }
+
+    .result-heading-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .result-date {
+        font-size: 16px;
+    }
+
+    .route-summary {
+        flex-direction: column;
+    }
+
+    .route-summary-main {
+        padding: 28px 20px;
+        gap: 12px;
+    }
+
+    .route-connector {
+        min-width: 48px;
+    }
+
+    .route-caption {
+        display: none;
+    }
+
+    .airport-city {
+        font-size: 15px;
+    }
+
+    .summary-price {
+        flex-basis: auto;
+        padding: 28px 20px;
+        border-left: 0;
+        border-top: 2px dashed var(--line);
+    }
+
+    .summary-price::before,
+    .summary-price::after {
+        top: -15px;
+        bottom: auto;
+    }
+
+    .summary-price::before {
+        left: -14px;
+    }
+
+    .summary-price::after {
+        left: auto;
+        right: -14px;
+    }
+
+    .summary-price strong {
+        font-size: 30px;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .metric-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas: "label value" "caption value";
+        align-items: center;
+        column-gap: 16px;
+        row-gap: 4px;
+        padding: 20px;
+    }
+
+    .metric-label {
+        grid-area: label;
+        align-self: end;
+        font-size: 16px;
+    }
+
+    .metric-value {
+        grid-area: value;
+        margin: 0;
+        font-size: 48px;
+    }
+
+    .metric-caption {
+        grid-area: caption;
+        align-self: start;
+        margin: 0;
+    }
+
+    .chart-panel {
+        padding: 24px 16px 20px;
+    }
+
+    .chart-heading {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .chart-heading h2 {
+        font-size: 21px;
+    }
+
+    .chart-legend {
+        padding-top: 0;
+        gap: 20px;
+    }
+
+    .chart-wrap {
+        height: 260px;
+        margin-top: 20px;
+    }
+
+    .chart-footnotes {
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .chart-footnotes > div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .toast-region {
+        top: 72px;
+        right: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .brand-name {
+        display: none;
+    }
+
+    .top-nav {
+        margin-left: 0;
+    }
+}

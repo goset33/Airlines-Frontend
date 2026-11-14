@@ -1,0 +1,97 @@
+.empty-result {
+    padding: 40px 32px;
+    border: 2px dashed var(--line);
+    border-radius: var(--radius-panel);
+}
+
+.empty-result strong {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+}
+
+.empty-result p {
+    margin-top: 6px;
+    color: var(--muted);
+}
+
+.loading-card {
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+}
+
+.loading-card strong {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+}
+
+.loading-card p {
+    margin-top: 6px;
+    color: var(--muted);
+}
+
+.loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--violet-tint);
+    border-top-color: var(--violet);
+    border-radius: 50%;
+    animation: spin .85s linear infinite;
+}
+
+.toast-region {
+    position: fixed;
+    z-index: 20;
+    top: 88px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: min(380px, calc(100vw - 32px));
+    pointer-events: none;
+}
+
+.toast {
+    padding: 16px 20px;
+    border-radius: var(--radius-field);
+    color: #fff;
+    background: var(--ink);
+    font-size: 15px;
+    line-height: 1.45;
+    animation: toast-in .2s ease both;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.toast.error {
+    background: var(--danger);
+}
+
+.toast.success {
+    background: var(--green);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

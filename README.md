@@ -1,4 +1,5 @@
 # Reshis Airlines Frontend
+Сайт: https://reshis-airlines.netlify.app
 
 ## Стек
 - Языки: JavaScript, CSS, HTML
